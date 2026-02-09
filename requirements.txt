@@ -1,2 +1,4 @@
 Django>=6,<6.1
 wagtail==7.3rc1
+python-dotenv
+psycopg
