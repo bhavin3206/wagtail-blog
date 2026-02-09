@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+<article>
+    <h1>{{ page.title }}</h1>
+    <p>{{ page.date }}</p>
+    <p>{{ page.intro }}</p>
+    
+    {% for block in page.body %}
+        {% if block.block_type == 'heading' %}
+            <h2>{{ block.value }}</h2>
+        {% elif block.block_type == 'paragraph' %}
+            {{ block.value|richtext }}
+        {% elif block.block_type == 'image' %}
+            {% image block.value width-400 %}
+        {% endif %}
+    {% endfor %}
+</article>
